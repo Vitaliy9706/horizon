@@ -11,7 +11,7 @@ if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
   puppeteer = require("puppeteer");
 }
 
-app.get("/abudhabi", async (req, res) => {
+app.get("/abudhabi/:username/:password", async (req, res) => {
   let options = {};
 
   if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
@@ -25,14 +25,17 @@ app.get("/abudhabi", async (req, res) => {
   }
 
   try {
+    const username = req.params.username || "defaultUsername";
+    const password = req.params.password || "defaultPassword";
+    
     let browser = await puppeteer.launch(options);
 
     let page = await browser.newPage();
     await page.goto("https://hub.tissl.com/login?returnUrl=%2Fhome");
     await page.waitForSelector('input[formcontrolname="username"]');
 
-    await page.type('input[formcontrolname="username"]', "******");
-    await page.type('input[formcontrolname="password"]', "******");
+    await page.type('input[formcontrolname="username"]', username);
+    await page.type('input[formcontrolname="password"]', password);
     await page.click("button.btn.btn-primary");
 
     await page.waitForNavigation();
@@ -59,7 +62,7 @@ app.get("/abudhabi", async (req, res) => {
 });
 
 //Dubai endpoint
-app.get("/dubai", async (req, res) => {
+app.get("/dubai/:username/:password", async (req, res) => {
   let options = {};
 
   if (process.env.AWS_LAMBDA_FUNCTION_VERSION) {
@@ -73,14 +76,17 @@ app.get("/dubai", async (req, res) => {
   }
 
   try {
+    const username = req.params.username || "defaultUsername";
+    const password = req.params.password || "defaultPassword";
+    
     let browser = await puppeteer.launch(options);
 
     let page = await browser.newPage();
     await page.goto("https://hub.tissl.com/login?returnUrl=%2Fhome");
     await page.waitForSelector('input[formcontrolname="username"]');
 
-    await page.type('input[formcontrolname="username"]', "*****");
-    await page.type('input[formcontrolname="password"]', "*****");
+    await page.type('input[formcontrolname="username"]', username);
+    await page.type('input[formcontrolname="password"]', password);
     await page.click("button.btn.btn-primary");
 
     await page.waitForNavigation();
