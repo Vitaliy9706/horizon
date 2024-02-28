@@ -31,8 +31,8 @@ app.get("/abudhabi", async (req, res) => {
     await page.goto("https://hub.tissl.com/login?returnUrl=%2Fhome");
     await page.waitForSelector('input[formcontrolname="username"]');
 
-    await page.type('input[formcontrolname="username"]', "Vitaly");
-    await page.type('input[formcontrolname="password"]', "123");
+    await page.type('input[formcontrolname="username"]', "******");
+    await page.type('input[formcontrolname="password"]', "******");
     await page.click("button.btn.btn-primary");
 
     await page.waitForNavigation();
@@ -79,8 +79,8 @@ app.get("/dubai", async (req, res) => {
     await page.goto("https://hub.tissl.com/login?returnUrl=%2Fhome");
     await page.waitForSelector('input[formcontrolname="username"]');
 
-    await page.type('input[formcontrolname="username"]', "harish1");
-    await page.type('input[formcontrolname="password"]', "dubai");
+    await page.type('input[formcontrolname="username"]', "*****");
+    await page.type('input[formcontrolname="password"]', "*****");
     await page.click("button.btn.btn-primary");
 
     await page.waitForNavigation();
